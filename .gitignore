@@ -16,7 +16,6 @@
 [Rr]elease/
 [Rr]eleases/
 [Xx]64/
-[Xx]86/
 [Bb]uild/
 bld/
 [Bb]in/
@@ -187,6 +186,9 @@ ClientBin/
 *.publishsettings
 node_modules/
 orleans.codegen.cs
+*.apk
+*.bat
+*.keystore
 
 # RIA/Silverlight projects
 Generated_Code/

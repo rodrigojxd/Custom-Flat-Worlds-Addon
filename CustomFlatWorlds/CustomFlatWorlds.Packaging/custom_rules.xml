@@ -1,0 +1,20 @@
+﻿<project name="custom_rules">
+
+  <available file="libs/x86" property="x86Dir.exists"/>
+  <available file="libs/armeabi-v7a" property="armDir.exists"/>
+
+  <target name="-pre-build-x86" if="x86Dir.exists" unless="armDir.exists">
+    <echo>prefixing version code with 5 (for x86 ABI).</echo>
+    <replaceregexp file="AndroidManifest.xml" match="android:versionCode.*([0-9]+).*"
+        replace='android:versionCode="5\1"'/>
+  </target>
+
+  <target name="-pre-build-arm" if="armDir.exists" unless="x86Dir.exists">
+    <echo>prefixing version code with 3 (for armeabi-v7a ABI).</echo>
+    <replaceregexp file="AndroidManifest.xml" match="android:versionCode.*([0-9]+).*"
+        replace='android:versionCode="3\1"'/>
+  </target>
+
+  <target name="-pre-build" depends="-pre-build-x86,-pre-build-arm" />
+
+</project>
